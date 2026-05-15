@@ -1,3 +1,5 @@
+![Preview](preview.svg)
+
 # DecisionLedger
 
 **The micro-journal that turns your choices into patterns.**
@@ -6,7 +8,7 @@
 
 ## Problem
 
-You make 30–50 significant micro-decisions per day — study vs. build, defer vs. act, spend vs. save. You have no record of them. So you diagnose nothing, fix nothing, and repeat the same costly calls every week.
+You make 30–50 significant micro-decisions per day — study vs. build, defer vs. act, spend vs. save. You have no record of them. So you diagnose nothing, fix nothing, and repeat the same costly mistakes.
 
 ## Who it's for
 
@@ -15,7 +17,7 @@ BCom students, CA aspirants, founders, builders — anyone in high-execution mod
 ## Why existing tools fail
 
 | Tool | Failure |
-|------|---------|
+|------|----------|
 | Notion | Too heavy, no decision-native schema |
 | Journaling apps | Narrative-first, not data-first |
 | Eisenhower matrix | Static template, no memory |

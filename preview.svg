@@ -1,0 +1,129 @@
+<svg viewBox="0 0 480 820" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0b1a"/>
+      <stop offset="100%" stop-color="#07070f"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#7461f5" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7461f5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="100%" r="50%">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7461f5"/>
+      <stop offset="100%" stop-color="#5a4dc8"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#a08dff"/>
+      <stop offset="100%" stop-color="#2dd4a8"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="820" fill="url(#bg)"/>
+  <rect width="480" height="820" fill="url(#glow1)"/>
+  <rect width="480" height="820" fill="url(#glow2)"/>
+
+  <!-- Header -->
+  <rect x="170" y="28" width="140" height="22" rx="11" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <circle cx="184" cy="39" r="3.5" fill="#2dd4a8"/>
+  <text x="192" y="43" font-size="9" fill="#a08dff" letter-spacing="1" font-weight="600">DECISION OS</text>
+  <text x="240" y="80" text-anchor="middle" font-size="26" font-weight="800" fill="url(#textGrad)" letter-spacing="-0.5">DecisionLedger</text>
+  <text x="240" y="98" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)" font-weight="300">Log choices · Detect patterns · Stop repeating mistakes</text>
+
+  <!-- Stats -->
+  <rect x="16" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="85" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#f0eeff">7</text>
+  <text x="85" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">LOGGED</text>
+
+  <rect x="171" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="240" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#2dd4a8">71%</text>
+  <text x="240" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">GOOD CALLS</text>
+
+  <rect x="326" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="395" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#f0eeff">3</text>
+  <text x="395" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">DAY STREAK</text>
+
+  <!-- Tabs — Ledger active -->
+  <rect x="16" y="182" width="448" height="40" rx="14" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="92" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(240,238,255,0.3)" letter-spacing="1">LOG</text>
+  <rect x="168" y="186" width="144" height="32" rx="10" fill="#7461f5"/>
+  <text x="240" y="206" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">LEDGER</text>
+  <text x="388" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(240,238,255,0.3)" letter-spacing="1">INSIGHTS</text>
+
+  <!-- Decision card 1 — Good call -->
+  <rect x="16" y="234" width="448" height="116" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="256" font-size="13" font-weight="500" fill="#f0eeff">Skipped revision to push TimeFlow feature</text>
+  <rect x="358" y="244" width="90" height="20" rx="10" fill="rgba(116,97,245,0.2)" stroke="rgba(116,97,245,0.3)" stroke-width="1"/>
+  <text x="403" y="258" text-anchor="middle" font-size="9" fill="#a08dff" font-weight="700" letter-spacing="0.5">BUILD</text>
+  <text x="36" y="274" font-size="11" fill="rgba(240,238,255,0.28)">↳ Deadline anxiety, felt behind on build</text>
+  <text x="36" y="294" font-size="15">😤</text>
+  <text x="58" y="294" font-size="11" font-weight="500" fill="#2dd4a8">70% conf</text>
+  <text x="132" y="294" font-size="10" fill="rgba(240,238,255,0.28)">↩ reversible</text>
+  <text x="420" y="294" font-size="10" fill="rgba(240,238,255,0.28)">14 May</text>
+  <rect x="36" y="304" width="130" height="30" rx="7" fill="rgba(45,212,168,0.12)" stroke="#2dd4a8" stroke-width="1"/>
+  <text x="101" y="323" text-anchor="middle" font-size="11" fill="#2dd4a8" font-weight="600">✓ Good call</text>
+  <rect x="174" y="304" width="130" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="239" y="323" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">⏳ Pending</text>
+  <rect x="312" y="304" width="136" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="380" y="323" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">✗ Regret</text>
+
+  <!-- Decision card 2 — Regret -->
+  <rect x="16" y="360" width="448" height="116" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="382" font-size="13" font-weight="500" fill="#f0eeff">Bought course instead of finishing revision</text>
+  <rect x="346" y="370" width="102" height="20" rx="10" fill="rgba(245,183,49,0.18)" stroke="rgba(245,183,49,0.3)" stroke-width="1"/>
+  <text x="397" y="384" text-anchor="middle" font-size="9" fill="#f5b731" font-weight="700" letter-spacing="0.5">FINANCE</text>
+  <text x="36" y="400" font-size="11" fill="rgba(240,238,255,0.28)">↳ FOMO, sale ending soon</text>
+  <text x="36" y="420" font-size="15">😔</text>
+  <text x="58" y="420" font-size="11" font-weight="500" fill="#f5b731">40% conf</text>
+  <text x="132" y="420" font-size="10" fill="rgba(240,238,255,0.28)">🔒 locked</text>
+  <text x="420" y="420" font-size="10" fill="rgba(240,238,255,0.28)">13 May</text>
+  <rect x="36" y="430" width="130" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="101" y="449" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">✓ Good call</text>
+  <rect x="174" y="430" width="130" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="239" y="449" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">⏳ Pending</text>
+  <rect x="312" y="430" width="136" height="30" rx="7" fill="rgba(240,96,96,0.12)" stroke="#f06060" stroke-width="1"/>
+  <text x="380" y="449" text-anchor="middle" font-size="11" fill="#f06060" font-weight="600">✗ Regret</text>
+
+  <!-- Decision card 3 — Pending -->
+  <rect x="16" y="486" width="448" height="116" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="508" font-size="13" font-weight="500" fill="#f0eeff">Deferred CA mock to next week</text>
+  <rect x="364" y="496" width="84" height="20" rx="10" fill="rgba(99,153,34,0.18)" stroke="rgba(99,153,34,0.3)" stroke-width="1"/>
+  <text x="406" y="510" text-anchor="middle" font-size="9" fill="#9dce56" font-weight="700" letter-spacing="0.5">STUDY</text>
+  <text x="36" y="526" font-size="11" fill="rgba(240,238,255,0.28)">↳ Felt underprepared, needed more time</text>
+  <text x="36" y="546" font-size="15">😶</text>
+  <text x="58" y="546" font-size="11" font-weight="500" fill="#f06060">35% conf</text>
+  <text x="132" y="546" font-size="10" fill="rgba(240,238,255,0.28)">↩ reversible</text>
+  <text x="420" y="546" font-size="10" fill="rgba(240,238,255,0.28)">13 May</text>
+  <rect x="36" y="556" width="130" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="101" y="575" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">✓ Good call</text>
+  <rect x="174" y="556" width="130" height="30" rx="7" fill="rgba(245,183,49,0.12)" stroke="#f5b731" stroke-width="1"/>
+  <text x="239" y="575" text-anchor="middle" font-size="11" fill="#f5b731" font-weight="600">⏳ Pending</text>
+  <rect x="312" y="556" width="136" height="30" rx="7" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="380" y="575" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)">✗ Regret</text>
+
+  <!-- Decision card 4 — faded/partial -->
+  <rect x="16" y="612" width="448" height="90" rx="14" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <text x="36" y="634" font-size="13" font-weight="500" fill="rgba(240,238,255,0.4)">Skipped gym for 3rd day running</text>
+  <rect x="372" y="622" width="76" height="20" rx="10" fill="rgba(45,212,168,0.1)" stroke="rgba(45,212,168,0.2)" stroke-width="1"/>
+  <text x="410" y="636" text-anchor="middle" font-size="9" fill="rgba(45,212,168,0.6)" font-weight="700" letter-spacing="0.5">HEALTH</text>
+  <text x="36" y="652" font-size="11" fill="rgba(240,238,255,0.18)">↳ Said "tomorrow" again</text>
+  <text x="36" y="672" font-size="15" opacity="0.4">😰</text>
+  <text x="58" y="672" font-size="11" fill="rgba(240,238,255,0.2)">55% conf</text>
+  <text x="132" y="672" font-size="10" fill="rgba(240,238,255,0.15)">↩ reversible</text>
+  <text x="420" y="672" font-size="10" fill="rgba(240,238,255,0.15)">12 May</text>
+  <defs>
+    <linearGradient id="fadeOut" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#07070f" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#07070f" stop-opacity="0.92"/>
+    </linearGradient>
+  </defs>
+  <rect x="16" y="660" width="448" height="90" fill="url(#fadeOut)"/>
+
+  <!-- Label -->
+  <text x="240" y="798" text-anchor="middle" font-size="10" fill="rgba(240,238,255,0.2)" letter-spacing="0.5">Ledger Tab — DecisionLedger</text>
+</svg>
