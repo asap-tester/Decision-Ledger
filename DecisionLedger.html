@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DecisionLedger — Decision OS</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#07070f;
+  --surface:rgba(255,255,255,0.035);
+  --glass:rgba(255,255,255,0.055);
+  --glass2:rgba(255,255,255,0.09);
+  --gb:rgba(255,255,255,0.08);
+  --accent:#7461f5;
+  --accent-lt:#a08dff;
+  --glow:rgba(116,97,245,0.35);
+  --glow2:rgba(116,97,245,0.12);
+  --green:#2dd4a8;
+  --green-d:rgba(45,212,168,0.12);
+  --red:#f06060;
+  --red-d:rgba(240,96,96,0.12);
+  --amber:#f5b731;
+  --amber-d:rgba(245,183,49,0.12);
+  --t1:#f0eeff;
+  --t2:rgba(240,238,255,0.55);
+  --t3:rgba(240,238,255,0.28);
+  --t4:rgba(240,238,255,0.14);
+  --r:14px;
+  --rs:8px;
+}
+html,body{min-height:100vh;background:var(--bg);color:var(--t1);font-family:'DM Sans',sans-serif;font-size:15px;overflow-x:hidden}
+body{background:
+  radial-gradient(ellipse 60% 40% at 20% 0%,rgba(116,97,245,0.13),transparent),
+  radial-gradient(ellipse 50% 30% at 80% 100%,rgba(45,212,168,0.07),transparent),
+  var(--bg)}
+
+.shell{max-width:480px;margin:0 auto;padding:1.5rem 1rem 7rem}
+
+/* ── Header ── */
+.hdr{padding:2.2rem 0 1.6rem;text-align:center}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--glass);border:1px solid var(--gb);border-radius:100px;padding:5px 16px 5px 10px;font-size:11px;color:var(--accent-lt);letter-spacing:.06em;text-transform:uppercase;margin-bottom:1.1rem;font-family:'Syne',sans-serif}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.hdr h1{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(130deg,#fff 0%,var(--accent-lt) 60%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.4rem}
+.hdr p{font-size:13px;color:var(--t2);font-weight:300;letter-spacing:.01em}
+
+/* ── Stats ── */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1.4rem}
+.stat{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:14px 10px 12px;text-align:center;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:transform .2s,background .2s,box-shadow .2s;cursor:default}
+.stat:hover{background:var(--glass2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.sv{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:700;line-height:1;letter-spacing:-.02em}
+.sl{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-top:5px;font-weight:500}
+
+/* ── Tabs ── */
+.tabs{display:flex;background:var(--surface);border:1px solid var(--gb);border-radius:var(--r);padding:4px;gap:4px;margin-bottom:1.4rem}
+.tab{flex:1;padding:9px 4px;border:none;background:transparent;color:var(--t3);font-size:12px;font-weight:600;font-family:'Syne',sans-serif;border-radius:10px;cursor:pointer;transition:all .25s;text-align:center;letter-spacing:.04em;text-transform:uppercase}
+.tab.active{background:var(--accent);color:#fff;box-shadow:0 0 18px var(--glow)}
+
+/* ── Card ── */
+.card{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:1.3rem;margin-bottom:1rem;backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px)}
+.card-title{font-family:'Syne',sans-serif;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:.9rem;font-weight:600}
+
+/* ── Fields ── */
+.field{margin-bottom:.9rem}
+.field label{display:block;font-size:12px;color:var(--t2);margin-bottom:.35rem;font-weight:500}
+textarea,select,input[type=text]{width:100%;background:rgba(255,255,255,0.04);border:1px solid var(--gb);border-radius:var(--rs);padding:10px 13px;color:var(--t1);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;appearance:none;-webkit-appearance:none}
+textarea:focus,select:focus,input[type=text]:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--glow2)}
+textarea{line-height:1.5}
+select option{background:#0f0f1e}
+
+/* ── Category pills ── */
+.pill-row{display:flex;flex-wrap:wrap;gap:6px}
+.pill{border:1px solid var(--gb);background:var(--surface);border-radius:100px;padding:5px 13px;font-size:12px;color:var(--t2);cursor:pointer;transition:all .2s;font-weight:500;-webkit-tap-highlight-color:transparent}
+.pill.sel{background:var(--glow2);border-color:var(--accent);color:var(--accent-lt)}
+
+/* ── Emotion grid ── */
+.emo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.emo-btn{border:1px solid var(--gb);background:var(--surface);border-radius:10px;padding:9px 4px 8px;font-size:10px;color:var(--t2);cursor:pointer;transition:all .2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px;-webkit-tap-highlight-color:transparent;font-family:'DM Sans',sans-serif;font-weight:500}
+.emo-btn .ei{font-size:20px}
+.emo-btn.sel{border-color:var(--accent);background:var(--glow2);color:var(--accent-lt)}
+
+/* ── Slider ── */
+.sl-row{display:flex;align-items:center;gap:10px}
+.sl-row input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:4px;background:var(--gb);outline:none;cursor:pointer}
+.sl-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 10px var(--glow);transition:box-shadow .2s}
+.sl-row input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 16px var(--glow)}
+.sl-lbl{font-size:14px;font-weight:600;color:var(--accent-lt);min-width:36px;text-align:right;font-family:'Syne',sans-serif}
+.sl-end{font-size:11px;color:var(--t3)}
+
+/* ── Rev toggle ── */
+.rev-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.rev-btn{padding:10px;border-radius:var(--rs);border:1px solid var(--gb);background:var(--surface);font-size:12px;cursor:pointer;color:var(--t2);transition:all .2s;font-weight:500;font-family:'DM Sans',sans-serif}
+.rev-btn.sel-y{border-color:var(--green);background:var(--green-d);color:var(--green)}
+.rev-btn.sel-n{border-color:var(--red);background:var(--red-d);color:var(--red)}
+
+/* ── Primary btn ── */
+.btn-primary{width:100%;padding:14px;background:linear-gradient(135deg,var(--accent) 0%,#5a4dc8 100%);border:none;border-radius:var(--r);color:#fff;font-size:15px;font-weight:700;cursor:pointer;transition:opacity .2s,transform .15s;letter-spacing:-.01em;font-family:'Syne',sans-serif;box-shadow:0 4px 20px var(--glow)}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+.btn-primary:active{transform:scale(.98);opacity:.85}
+
+/* ── Decision items ── */
+.di{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:.75rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);transition:all .2s}
+.di:hover{background:var(--glass2);transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.25)}
+.di-top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:.4rem}
+.di-text{font-size:14px;font-weight:500;flex:1;line-height:1.45;color:var(--t1)}
+.di-cat{font-size:10px;text-transform:uppercase;letter-spacing:.07em;padding:3px 9px;border-radius:100px;white-space:nowrap;font-weight:600;font-family:'Syne',sans-serif}
+.di-why{font-size:12px;color:var(--t3);margin-bottom:.5rem;padding-left:2px}
+.di-meta{display:flex;align-items:center;gap:10px;margin-bottom:.6rem}
+.di-emo{font-size:16px}
+.di-conf{font-size:12px;font-weight:500}
+.di-lock{font-size:11px;color:var(--t3)}
+.di-date{font-size:11px;color:var(--t3);margin-left:auto}
+.out-row{display:flex;gap:6px}
+.ob{flex:1;padding:7px 4px;border-radius:7px;border:1px solid var(--gb);background:var(--surface);font-size:11px;cursor:pointer;color:var(--t2);transition:all .2s;font-weight:500;font-family:'DM Sans',sans-serif;text-align:center;-webkit-tap-highlight-color:transparent}
+.ob.og{border-color:var(--green);background:var(--green-d);color:var(--green)}
+.ob.or{border-color:var(--red);background:var(--red-d);color:var(--red)}
+.ob.op{border-color:var(--amber);background:var(--amber-d);color:var(--amber)}
+
+/* ── Insights ── */
+.ins-card{background:var(--glass);border:1px solid var(--gb);border-radius:var(--r);padding:1.1rem 1.2rem;margin-bottom:.8rem;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.ins-lbl{font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--t3);margin-bottom:.25rem;font-family:'Syne',sans-serif;font-weight:600}
+.ins-val{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:700;color:var(--accent-lt);letter-spacing:-.03em;line-height:1}
+.ins-sub{font-size:12px;color:var(--t2);margin-top:.3rem}
+
+/* ── Bar ── */
+.bar-row{display:flex;align-items:center;gap:8px;margin-top:.55rem}
+.bar-lbl{font-size:12px;color:var(--t2);width:70px;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-transform:capitalize}
+.bar-track{flex:1;background:rgba(255,255,255,0.06);border-radius:4px;height:5px;overflow:hidden}
+.bar-fill{height:5px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--accent-lt));transition:width .7s cubic-bezier(.4,0,.2,1)}
+.bar-n{font-size:11px;color:var(--t3);min-width:20px;text-align:right}
+
+/* ── Regret meter ── */
+.rm-row{display:flex;align-items:center;gap:10px;margin:.4rem 0 .2rem}
+.rm-track{flex:1;height:7px;border-radius:7px;background:rgba(255,255,255,0.06);overflow:hidden}
+.rm-fill{height:7px;border-radius:7px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.rm-score{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700;min-width:40px;text-align:right}
+
+/* ── Pattern chips ── */
+.pc{display:flex;align-items:flex-start;gap:10px;background:var(--surface);border:1px solid var(--gb);border-radius:var(--rs);padding:.75rem .9rem;margin-bottom:.5rem}
+.pc-ico{font-size:1.25rem;flex-shrink:0;line-height:1.2}
+.pc-body{flex:1}
+.pc-text{font-size:12.5px;color:var(--t2);line-height:1.45}
+.pc-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;background:var(--glow2);color:var(--accent-lt);margin-top:4px;font-weight:600;font-family:'Syne',sans-serif;letter-spacing:.05em;text-transform:uppercase}
+
+/* ── Category badge colors ── */
+.c-study{background:rgba(99,153,34,.18);color:#9dce56}
+.c-finance{background:rgba(245,183,49,.18);color:#f5b731}
+.c-build{background:rgba(116,97,245,.2);color:#a08dff}
+.c-social{background:rgba(212,83,126,.18);color:#f47bac}
+.c-health{background:rgba(45,212,168,.18);color:#2dd4a8}
+.c-other{background:rgba(136,135,128,.15);color:#b4b2a9}
+
+/* ── Empty ── */
+.empty{text-align:center;padding:3rem 1rem;color:var(--t3)}
+.empty-ico{font-size:2.8rem;margin-bottom:.8rem}
+.empty p{font-size:14px;line-height:1.6}
+
+/* ── Toast ── */
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(24px);background:rgba(116,97,245,.88);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;opacity:0;transition:all .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none;white-space:nowrap;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);z-index:999;font-family:'Syne',sans-serif;letter-spacing:.03em;box-shadow:0 4px 24px var(--glow)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ── Views ── */
+.view{display:none}
+.view.active{display:block}
+
+/* ── Scroll animation ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:fadeUp .3s ease both}
+</style>
+</head>
+<body>
+<div class="shell">
+
+  <!-- Header -->
+  <div class="hdr">
+    <div class="badge"><span class="badge-dot"></span>Decision OS</div>
+    <h1>DecisionLedger</h1>
+    <p>Log choices · Detect patterns · Stop repeating mistakes</p>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><div class="sv" id="s-total">0</div><div class="sl">Logged</div></div>
+    <div class="stat"><div class="sv" id="s-good" style="color:var(--green)">—</div><div class="sl">Good calls</div></div>
+    <div class="stat"><div class="sv" id="s-streak">0</div><div class="sl">Day streak</div></div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="go('log')">Log</button>
+    <button class="tab" onclick="go('ledger')">Ledger</button>
+    <button class="tab" onclick="go('insights')">Insights</button>
+  </div>
+
+  <!-- LOG -->
+  <div class="view active" id="view-log">
+    <div class="card anim">
+      <div class="card-title">New Decision</div>
+
+      <div class="field">
+        <label>What decision did you make?</label>
+        <textarea id="inp-d" rows="2" placeholder="e.g. Skipped revision to push a TimeFlow feature…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Why did you make it?</label>
+        <textarea id="inp-w" rows="2" placeholder="e.g. Deadline anxiety, felt behind on the build…"></textarea>
+      </div>
+
+      <div class="field">
+        <label>Category</label>
+        <div class="pill-row" id="cat-row">
+          <div class="pill sel" data-cat="study" onclick="pickCat(this)">Study</div>
+          <div class="pill" data-cat="finance" onclick="pickCat(this)">Finance</div>
+          <div class="pill" data-cat="build" onclick="pickCat(this)">Build</div>
+          <div class="pill" data-cat="social" onclick="pickCat(this)">Social</div>
+          <div class="pill" data-cat="health" onclick="pickCat(this)">Health</div>
+          <div class="pill" data-cat="other" onclick="pickCat(this)">Other</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>How do you feel about it?</label>
+        <div class="emo-grid" id="emo-row">
+          <button class="emo-btn" onclick="pickEmo(this,'confident','😤')"><span class="ei">😤</span><span>Confident</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'anxious','😰')"><span class="ei">😰</span><span>Anxious</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'unsure','😶')"><span class="ei">😶</span><span>Unsure</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'relieved','😌')"><span class="ei">😌</span><span>Relieved</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'guilty','😔')"><span class="ei">😔</span><span>Guilty</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'excited','⚡')"><span class="ei">⚡</span><span>Excited</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'rushed','🔥')"><span class="ei">🔥</span><span>Rushed</span></button>
+          <button class="emo-btn" onclick="pickEmo(this,'calm','🧊')"><span class="ei">🧊</span><span>Calm</span></button>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Confidence: <span id="cf-lbl" style="color:var(--accent-lt);font-family:'Syne',sans-serif">70%</span></label>
+        <div class="sl-row">
+          <span class="sl-end">Low</span>
+          <input type="range" min="0" max="100" value="70" step="5" id="cf-sl" oninput="document.getElementById('cf-lbl').textContent=this.value+'%'"/>
+          <span class="sl-end">High</span>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Is this reversible?</label>
+        <div class="rev-row">
+          <button class="rev-btn sel-y" id="rv-y" onclick="pickRev('yes')">↩ Yes, can undo</button>
+          <button class="rev-btn" id="rv-n" onclick="pickRev('no')">🔒 No, locked in</button>
+        </div>
+      </div>
+
+      <button class="btn-primary" onclick="logIt()">Log Decision →</button>
+    </div>
+  </div>
+
+  <!-- LEDGER -->
+  <div class="view" id="view-ledger">
+    <div id="ledger-list"></div>
+    <div id="ledger-empty" class="empty" style="display:none">
+      <div class="empty-ico">📓</div>
+      <p>No decisions yet.<br/>Start logging from the Log tab.</p>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="view" id="view-insights">
+    <div id="ins-root"></div>
+  </div>
+
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='dl_v3';
+let DD=[];
+let CAT='study';
+let EMO={label:'',emoji:''};
+let REV='yes';
+
+function load(){try{DD=JSON.parse(localStorage.getItem(KEY)||'[]')}catch{DD=[]}renderStats()}
+function save(){localStorage.setItem(KEY,JSON.stringify(DD))}
+
+function pickCat(el){
+  document.querySelectorAll('#cat-row .pill').forEach(p=>p.classList.remove('sel'));
+  el.classList.add('sel');
+  CAT=el.dataset.cat;
+}
+function pickEmo(el,label,emoji){
+  document.querySelectorAll('#emo-row .emo-btn').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');
+  EMO={label,emoji};
+}
+function pickRev(v){
+  REV=v;
+  document.getElementById('rv-y').className='rev-btn'+(v==='yes'?' sel-y':'');
+  document.getElementById('rv-n').className='rev-btn'+(v==='no'?' sel-n':'');
+}
+
+function logIt(){
+  const text=document.getElementById('inp-d').value.trim();
+  const why=document.getElementById('inp-w').value.trim();
+  if(!text){toast('Add the decision first');return}
+  const conf=parseInt(document.getElementById('cf-sl').value);
+  DD.unshift({id:Date.now(),text,why,cat:CAT,emotion:EMO.label||'',emoji:EMO.emoji||'•',conf,rev:REV==='yes',outcome:'pending',ts:new Date().toISOString()});
+  save();renderStats();toast('Logged ✓');
+  document.getElementById('inp-d').value='';
+  document.getElementById('inp-w').value='';
+  document.getElementById('cf-sl').value=70;
+  document.getElementById('cf-lbl').textContent='70%';
+}
+
+function setOut(id,outcome){
+  const d=DD.find(x=>x.id===id);
+  if(!d)return;
+  d.outcome=outcome;save();renderLedger();renderStats();renderIns();
+  toast(outcome==='good'?'Good call marked ✓':outcome==='bad'?'Regret logged':'Reset to pending');
+}
+
+function renderStats(){
+  document.getElementById('s-total').textContent=DD.length;
+  const res=DD.filter(d=>d.outcome!=='pending');
+  const good=res.filter(d=>d.outcome==='good');
+  document.getElementById('s-good').textContent=res.length?Math.round(good.length/res.length*100)+'%':'—';
+  const days=new Set(DD.map(d=>d.ts.slice(0,10)));
+  let streak=0,cur=new Date();
+  for(let i=0;i<366;i++){
+    if(days.has(cur.toISOString().slice(0,10))){streak++;cur.setDate(cur.getDate()-1)}else break;
+  }
+  document.getElementById('s-streak').textContent=streak;
+}
+
+function renderLedger(){
+  const el=document.getElementById('ledger-list');
+  const emp=document.getElementById('ledger-empty');
+  if(!DD.length){el.innerHTML='';emp.style.display='block';return}
+  emp.style.display='none';
+  el.innerHTML=DD.map(d=>{
+    const cconf=d.conf>=70?'var(--green)':d.conf>=40?'var(--amber)':'var(--red)';
+    const dt=new Date(d.ts).toLocaleDateString('en-IN',{day:'numeric',month:'short'});
+    return `<div class="di anim">
+      <div class="di-top">
+        <div class="di-text">${esc(d.text)}</div>
+        <span class="di-cat c-${d.cat}">${d.cat}</span>
+      </div>
+      ${d.why?`<div class="di-why">↳ ${esc(d.why)}</div>`:''}
+      <div class="di-meta">
+        ${d.emoji?`<span class="di-emo">${d.emoji}</span>`:''}
+        <span class="di-conf" style="color:${cconf}">${d.conf}% conf</span>
+        <span class="di-lock">${d.rev?'↩ reversible':'🔒 locked'}</span>
+        <span class="di-date">${dt}</span>
+      </div>
+      <div class="out-row">
+        <button class="ob${d.outcome==='good'?' og':''}" onclick="setOut(${d.id},'good')">✓ Good call</button>
+        <button class="ob${d.outcome==='pending'?' op':''}" onclick="setOut(${d.id},'pending')">⏳ Pending</button>
+        <button class="ob${d.outcome==='bad'?' or':''}" onclick="setOut(${d.id},'bad')">✗ Regret</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderIns(){
+  const el=document.getElementById('ins-root');
+  if(DD.length<2){el.innerHTML='<div class="empty"><div class="empty-ico">🔮</div><p>Log at least 2 decisions<br/>to unlock patterns.</p></div>';return}
+  const res=DD.filter(d=>d.outcome!=='pending');
+  const good=res.filter(d=>d.outcome==='good');
+  const bad=res.filter(d=>d.outcome==='bad');
+  const rr=res.length?Math.round(bad.length/res.length*100):0;
+  const avgConf=Math.round(DD.reduce((a,d)=>a+d.conf,0)/DD.length);
+  const mC=rr<30?'var(--green)':rr<60?'var(--amber)':'var(--red)';
+  const mFill=rr<30?`background:linear-gradient(90deg,var(--green),#6ee7b7)`:rr<60?`background:linear-gradient(90deg,var(--amber),#fcd34d)`:`background:linear-gradient(90deg,var(--red),#fca5a5)`;
+
+  const cats={study:0,finance:0,build:0,social:0,health:0,other:0};
+  DD.forEach(d=>{cats[d.cat]=(cats[d.cat]||0)+1});
+  const maxC=Math.max(...Object.values(cats),1);
+  const bars=Object.entries(cats).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1])
+    .map(([k,v])=>`<div class="bar-row"><span class="bar-lbl">${k}</span><div class="bar-track"><div class="bar-fill" style="width:${Math.round(v/maxC*100)}%"></div></div><span class="bar-n">${v}</span></div>`).join('');
+
+  const emoC={};
+  DD.forEach(d=>{if(d.emotion)emoC[d.emotion]=(emoC[d.emotion]||0)+1});
+  const topE=Object.entries(emoC).sort((a,b)=>b[1]-a[1])[0];
+  const topEEmoji=DD.find(d=>d.emotion===topE?.[0])?.emoji||'';
+
+  const pats=[];
+  if(topE&&topE[1]>=2)pats.push({i:topEEmoji,t:`You decide most often while feeling <strong>${topE[0]}</strong> (${topE[1]}×)`,tag:'Pattern'});
+  const lowBad=bad.filter(d=>d.conf<50).length;
+  if(lowBad>=1)pats.push({i:'⚠️',t:`${lowBad} low-confidence call${lowBad>1?'s':''} became a regret — your hesitation is data`,tag:'Warning'});
+  const highBad=bad.filter(d=>d.conf>=70).length;
+  if(highBad>=1)pats.push({i:'🎯',t:`${highBad} high-confidence call${highBad>1?'s':''} went wrong — confidence ≠ accuracy`,tag:'Calibration'});
+  const locked=DD.filter(d=>!d.rev).length;
+  if(locked>=2)pats.push({i:'🔒',t:`${locked} locked-in decisions logged — slow these down maximum deliberation`,tag:'Risk'});
+  const studyBad=bad.filter(d=>d.cat==='study').length;
+  if(studyBad>=1)pats.push({i:'📚',t:`${studyBad} study regret${studyBad>1?'s':''} — your biggest drain category`,tag:'Focus'});
+  if(!pats.length&&DD.length>=3)pats.push({i:'🌱',t:'No strong patterns yet — keep logging for 7 days',tag:'Building'});
+
+  el.innerHTML=`
+    <div class="ins-card anim">
+      <div class="ins-lbl">Regret Rate</div>
+      <div class="rm-row">
+        <div class="rm-track"><div class="rm-fill" style="${mFill};width:${rr}%"></div></div>
+        <div class="rm-score" style="color:${mC}">${rr}%</div>
+      </div>
+      <div class="ins-sub">${res.length} resolved · ${bad.length} regret${bad.length!==1?'s':''} · ${good.length} good call${good.length!==1?'s':''}</div>
+    </div>
+    <div class="ins-card anim">
+      <div class="ins-lbl">Avg Confidence</div>
+      <div class="ins-val">${avgConf}%</div>
+      <div class="ins-sub">${avgConf>=70?'High conviction decision-maker':'You hesitate often — investigate root causes'}</div>
+    </div>
+    <div class="ins-card anim">
+      <div class="ins-lbl">Decisions by Category</div>
+      ${bars}
+    </div>
+    ${pats.length?`<div class="card anim" style="margin-bottom:0">
+      <div class="card-title">Detected Patterns</div>
+      ${pats.map(p=>`<div class="pc"><span class="pc-ico">${p.i}</span><div class="pc-body"><div class="pc-text">${p.t}</div><span class="pc-tag">${p.tag}</span></div></div>`).join('')}
+    </div>`:''}
+  `;
+}
+
+function go(name){
+  document.querySelectorAll('.tab').forEach((t,i)=>t.classList.toggle('active',['log','ledger','insights'][i]===name));
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  if(name==='ledger')renderLedger();
+  if(name==='insights')renderIns();
+}
+
+function toast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.classList.add('show');
+  clearTimeout(t._t);
+  t._t=setTimeout(()=>t.classList.remove('show'),2300);
+}
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+
+load();
+</script>
+</body>
+</html>
