@@ -310,10 +310,17 @@ function logIt(){
   document.getElementById('inp-w').value='';
   document.getElementById('cf-sl').value=70;
   document.getElementById('cf-lbl').textContent='70%';
+
+  // Reset state & UI
+  CAT='study';
+  EMO={label:'',emoji:''};
+  pickRev('yes');
+  document.querySelectorAll('#cat-row .pill').forEach(p=>p.classList.toggle('sel',p.dataset.cat==='study'));
+  document.querySelectorAll('#emo-row .emo-btn').forEach(b=>b.classList.remove('sel'));
 }
 
 function setOut(id,outcome){
-  const d=DD.find(x=>x.id===id);
+  const d=DD.find(x=>x.id==id);
   if(!d)return;
   d.outcome=outcome;save();renderLedger();renderStats();renderIns();
   toast(outcome==='good'?'Good call marked ✓':outcome==='bad'?'Regret logged':'Reset to pending');
@@ -353,9 +360,9 @@ function renderLedger(){
         <span class="di-date">${dt}</span>
       </div>
       <div class="out-row">
-        <button class="ob${d.outcome==='good'?' og':''}" onclick="setOut(${d.id},'good')">✓ Good call</button>
-        <button class="ob${d.outcome==='pending'?' op':''}" onclick="setOut(${d.id},'pending')">⏳ Pending</button>
-        <button class="ob${d.outcome==='bad'?' or':''}" onclick="setOut(${d.id},'bad')">✗ Regret</button>
+        <button class="ob${d.outcome==='good'?' og':''}" onclick="setOut('${d.id}','good')">✓ Good call</button>
+        <button class="ob${d.outcome==='pending'?' op':''}" onclick="setOut('${d.id}','pending')">⏳ Pending</button>
+        <button class="ob${d.outcome==='bad'?' or':''}" onclick="setOut('${d.id}','bad')">✗ Regret</button>
       </div>
     </div>`;
   }).join('');
