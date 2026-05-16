@@ -2,6 +2,8 @@
 
 ![Preview](preview2.svg)
 
+![Preview](preview3.svg)
+
 # DecisionLedger
 
 **The micro-journal that turns your choices into patterns.**
@@ -14,7 +16,7 @@ You make 30–50 significant micro-decisions per day — study vs. build, defer 
 
 ## Who it's for
 
-All students, aspirants, founders, builders — anyone in high-execution mode with no decision infrastructure.
+BCom students, CA aspirants, founders, builders — anyone in high-execution mode with no decision infrastructure.
 
 ## Why existing tools fail
 

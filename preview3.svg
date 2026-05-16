@@ -1,0 +1,146 @@
+<svg viewBox="0 0 480 820" xmlns="http://www.w3.org/2000/svg" font-family="system-ui,-apple-system,sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0d0b1a"/>
+      <stop offset="100%" stop-color="#07070f"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="20%" cy="0%" r="60%">
+      <stop offset="0%" stop-color="#7461f5" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#7461f5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="80%" cy="100%" r="50%">
+      <stop offset="0%" stop-color="#2dd4a8" stop-opacity="0.09"/>
+      <stop offset="100%" stop-color="#2dd4a8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7461f5"/>
+      <stop offset="100%" stop-color="#a08dff"/>
+    </linearGradient>
+    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#a08dff"/>
+      <stop offset="100%" stop-color="#2dd4a8"/>
+    </linearGradient>
+    <linearGradient id="meterAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5b731"/>
+      <stop offset="100%" stop-color="#fcd34d"/>
+    </linearGradient>
+    <linearGradient id="barGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7461f5"/>
+      <stop offset="100%" stop-color="#a08dff"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="820" fill="url(#bg)"/>
+  <rect width="480" height="820" fill="url(#glow1)"/>
+  <rect width="480" height="820" fill="url(#glow2)"/>
+
+  <!-- ── HEADER ── -->
+  <rect x="170" y="28" width="140" height="22" rx="11" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <circle cx="184" cy="39" r="3.5" fill="#2dd4a8"/>
+  <text x="192" y="43" font-size="9" fill="#a08dff" letter-spacing="1" font-weight="600">DECISION OS</text>
+  <text x="240" y="80" text-anchor="middle" font-size="26" font-weight="800" fill="url(#textGrad)" letter-spacing="-0.5">DecisionLedger</text>
+  <text x="240" y="98" text-anchor="middle" font-size="11" fill="rgba(240,238,255,0.5)" font-weight="300">Log choices · Detect patterns · Stop repeating mistakes</text>
+
+  <!-- ── STATS ── -->
+  <rect x="16" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="85" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#f0eeff">7</text>
+  <text x="85" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">LOGGED</text>
+
+  <rect x="171" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="240" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#2dd4a8">71%</text>
+  <text x="240" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">GOOD CALLS</text>
+
+  <rect x="326" y="112" width="138" height="58" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="395" y="137" text-anchor="middle" font-size="22" font-weight="700" fill="#f0eeff">3</text>
+  <text x="395" y="152" text-anchor="middle" font-size="9" fill="rgba(240,238,255,0.28)" letter-spacing="1">DAY STREAK</text>
+
+  <!-- ── TABS — Insights active ── -->
+  <rect x="16" y="182" width="448" height="40" rx="14" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="92" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(240,238,255,0.3)" letter-spacing="1">LOG</text>
+  <text x="240" y="206" text-anchor="middle" font-size="11" font-weight="600" fill="rgba(240,238,255,0.3)" letter-spacing="1">LEDGER</text>
+  <rect x="316" y="186" width="144" height="32" rx="10" fill="#7461f5"/>
+  <text x="388" y="206" text-anchor="middle" font-size="11" font-weight="700" fill="#ffffff" letter-spacing="1">INSIGHTS</text>
+
+  <!-- ── REGRET RATE CARD ── -->
+  <rect x="16" y="234" width="448" height="86" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="255" font-size="9" font-weight="700" fill="rgba(240,238,255,0.28)" letter-spacing="2">REGRET RATE</text>
+  <!-- Meter track -->
+  <rect x="36" y="263" width="360" height="7" rx="3.5" fill="rgba(255,255,255,0.07)"/>
+  <!-- Fill — 29% amber -->
+  <rect x="36" y="263" width="104" height="7" rx="3.5" fill="url(#meterAmber)"/>
+  <!-- Score -->
+  <text x="416" y="272" text-anchor="middle" font-size="16" font-weight="700" fill="#f5b731">29%</text>
+  <!-- Sub label -->
+  <text x="36" y="292" font-size="11" fill="rgba(240,238,255,0.45)">5 resolved · 1 regret · 4 good calls</text>
+  <!-- Moderate warning -->
+  <rect x="36" y="300" width="200" height="12" rx="6" fill="rgba(245,183,49,0.1)"/>
+  <text x="46" y="310" font-size="9" fill="rgba(245,183,49,0.7)">Moderate — review patterns</text>
+
+  <!-- ── AVG CONFIDENCE CARD ── -->
+  <rect x="16" y="330" width="448" height="72" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="351" font-size="9" font-weight="700" fill="rgba(240,238,255,0.28)" letter-spacing="2">AVG CONFIDENCE</text>
+  <text x="36" y="381" font-size="28" font-weight="700" fill="#a08dff" letter-spacing="-1">62%</text>
+  <text x="108" y="375" font-size="11" fill="rgba(240,238,255,0.45)">You hesitate often —</text>
+  <text x="108" y="390" font-size="11" fill="rgba(240,238,255,0.45)">investigate root causes</text>
+
+  <!-- ── CATEGORY BREAKDOWN CARD ── -->
+  <rect x="16" y="412" width="448" height="154" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="433" font-size="9" font-weight="700" fill="rgba(240,238,255,0.28)" letter-spacing="2">DECISIONS BY CATEGORY</text>
+
+  <!-- Study — 3 (max, full bar) -->
+  <text x="36" y="455" font-size="12" fill="rgba(240,238,255,0.55)" text-anchor="start">study</text>
+  <rect x="110" y="446" width="300" height="5" rx="2.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="110" y="446" width="300" height="5" rx="2.5" fill="url(#barGrad)"/>
+  <text x="420" y="455" font-size="11" fill="rgba(240,238,255,0.28)" text-anchor="end">3</text>
+
+  <!-- Build — 2 -->
+  <text x="36" y="476" font-size="12" fill="rgba(240,238,255,0.55)">build</text>
+  <rect x="110" y="467" width="300" height="5" rx="2.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="110" y="467" width="200" height="5" rx="2.5" fill="url(#barGrad)"/>
+  <text x="420" y="476" font-size="11" fill="rgba(240,238,255,0.28)" text-anchor="end">2</text>
+
+  <!-- Finance — 1 -->
+  <text x="36" y="497" font-size="12" fill="rgba(240,238,255,0.55)">finance</text>
+  <rect x="110" y="488" width="300" height="5" rx="2.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="110" y="488" width="100" height="5" rx="2.5" fill="url(#barGrad)"/>
+  <text x="420" y="497" font-size="11" fill="rgba(240,238,255,0.28)" text-anchor="end">1</text>
+
+  <!-- Health — 1 -->
+  <text x="36" y="518" font-size="12" fill="rgba(240,238,255,0.55)">health</text>
+  <rect x="110" y="509" width="300" height="5" rx="2.5" fill="rgba(255,255,255,0.06)"/>
+  <rect x="110" y="509" width="100" height="5" rx="2.5" fill="url(#barGrad)"/>
+  <text x="420" y="518" font-size="11" fill="rgba(240,238,255,0.28)" text-anchor="end">1</text>
+
+  <!-- ── DETECTED PATTERNS CARD ── -->
+  <rect x="16" y="576" width="448" height="218" rx="14" fill="rgba(255,255,255,0.055)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="36" y="597" font-size="9" font-weight="700" fill="rgba(240,238,255,0.28)" letter-spacing="2">DETECTED PATTERNS</text>
+
+  <!-- Pattern chip 1 -->
+  <rect x="28" y="606" width="424" height="44" rx="8" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="46" y="632" font-size="18">😤</text>
+  <text x="72" y="624" font-size="12" fill="rgba(240,238,255,0.6)">You decide most often while feeling</text>
+  <text x="72" y="638" font-size="12" fill="rgba(240,238,255,0.6)"><tspan font-weight="700" fill="#f0eeff">confident</tspan> (3×)</text>
+  <rect x="376" y="614" width="64" height="17" rx="8" fill="rgba(116,97,245,0.15)"/>
+  <text x="408" y="626" text-anchor="middle" font-size="9" fill="#a08dff" font-weight="700" letter-spacing="0.5">PATTERN</text>
+
+  <!-- Pattern chip 2 -->
+  <rect x="28" y="658" width="424" height="44" rx="8" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="46" y="684" font-size="18">⚠️</text>
+  <text x="72" y="676" font-size="12" fill="rgba(240,238,255,0.6)">1 low-confidence call became a regret —</text>
+  <text x="72" y="690" font-size="12" fill="rgba(240,238,255,0.6)">your hesitation is data</text>
+  <rect x="366" y="666" width="74" height="17" rx="8" fill="rgba(116,97,245,0.15)"/>
+  <text x="403" y="678" text-anchor="middle" font-size="9" fill="#a08dff" font-weight="700" letter-spacing="0.5">WARNING</text>
+
+  <!-- Pattern chip 3 -->
+  <rect x="28" y="710" width="424" height="44" rx="8" fill="rgba(255,255,255,0.035)" stroke="rgba(255,255,255,0.07)" stroke-width="1"/>
+  <text x="46" y="736" font-size="18">📚</text>
+  <text x="72" y="728" font-size="12" fill="rgba(240,238,255,0.6)">1 study regret — your biggest</text>
+  <text x="72" y="742" font-size="12" fill="rgba(240,238,255,0.6)">drain category</text>
+  <rect x="380" y="718" width="60" height="17" rx="8" fill="rgba(116,97,245,0.15)"/>
+  <text x="410" y="730" text-anchor="middle" font-size="9" fill="#a08dff" font-weight="700" letter-spacing="0.5">FOCUS</text>
+
+  <!-- Label -->
+  <text x="240" y="806" text-anchor="middle" font-size="10" fill="rgba(240,238,255,0.2)" letter-spacing="0.5">Insights Tab — DecisionLedger</text>
+</svg>
