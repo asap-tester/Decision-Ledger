@@ -58,7 +58,7 @@ All students, aspirants, founders, builders — anyone in high-execution mode wi
 
 ## Install / Use
 
-1. Download `DecisionLedger.html`
+1. Download `index.html`
 2. Open in any browser
 3. Log your first decision
 
