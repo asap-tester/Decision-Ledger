@@ -40,9 +40,9 @@ body{background:
 
 /* ── Header ── */
 .hdr{padding:2.2rem 0 1.6rem;text-align:center}
-.badge{display:inline-flex;align-items:center;gap:7px;background:var(--glass);border:1px solid var(--gb);border-radius:100px;padding:5px 16px 5px 10px;font-size:11px;color:var(--accent-lt);letter-spacing:.05em}
+.badge{display:inline-flex;align-items:center;gap:7px;background:var(--glass);border:1px solid var(--gb);border-radius:100px;padding:5px 16px 5px 10px;font-size:11px;color:var(--accent-lt);letter-spacing:.05em;font-weight:600}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
-.hdr h1{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(130deg,#fff 0%,var(--accent-lt) 60%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:8px 0 6px}
+.hdr h1{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;letter-spacing:-.03em;line-height:1.1;background:linear-gradient(130deg,#fff 0%,var(--accent-lt) 60%,var(--green) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:.5rem 0}
 .hdr p{font-size:13px;color:var(--t2);font-weight:300;letter-spacing:.01em}
 
 /* ── Stats ── */
@@ -54,7 +54,7 @@ body{background:
 
 /* ── Tabs ── */
 .tabs{display:flex;background:var(--surface);border:1px solid var(--gb);border-radius:var(--r);padding:4px;gap:4px;margin-bottom:1.4rem}
-.tab{flex:1;padding:9px 4px;border:none;background:transparent;color:var(--t3);font-size:12px;font-weight:600;font-family:'Syne',sans-serif;border-radius:10px;cursor:pointer;transition:all .25s;text-transform:uppercase}
+.tab{flex:1;padding:9px 4px;border:none;background:transparent;color:var(--t3);font-size:12px;font-weight:600;font-family:'Syne',sans-serif;border-radius:10px;cursor:pointer;transition:all .25s;text-transform:uppercase;letter-spacing:.05em}
 .tab.active{background:var(--accent);color:#fff;box-shadow:0 0 18px var(--glow)}
 
 /* ── Card ── */
@@ -76,14 +76,14 @@ select option{background:#0f0f1e}
 
 /* ── Emotion grid ── */
 .emo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
-.emo-btn{border:1px solid var(--gb);background:var(--surface);border-radius:10px;padding:9px 4px 8px;font-size:10px;color:var(--t2);cursor:pointer;transition:all .2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:3px}
+.emo-btn{border:1px solid var(--gb);background:var(--surface);border-radius:10px;padding:9px 4px 8px;font-size:10px;color:var(--t2);cursor:pointer;transition:all .2s;text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
 .emo-btn .ei{font-size:20px}
 .emo-btn.sel{border-color:var(--accent);background:var(--glow2);color:var(--accent-lt)}
 
 /* ── Slider ── */
 .sl-row{display:flex;align-items:center;gap:10px}
 .sl-row input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:4px;background:var(--gb);outline:none;cursor:pointer}
-.sl-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 10px var(--glow);transition:box-shadow .2s}
+.sl-row input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 10px var(--glow);transition:all .2s}
 .sl-row input[type=range]::-webkit-slider-thumb:hover{box-shadow:0 0 16px var(--glow)}
 .sl-lbl{font-size:14px;font-weight:600;color:var(--accent-lt);min-width:36px;text-align:right;font-family:'Syne',sans-serif}
 .sl-end{font-size:11px;color:var(--t3)}
@@ -141,7 +141,7 @@ select option{background:#0f0f1e}
 .pc-ico{font-size:1.25rem;flex-shrink:0;line-height:1.2}
 .pc-body{flex:1}
 .pc-text{font-size:12.5px;color:var(--t2);line-height:1.45}
-.pc-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;background:var(--glow2);color:var(--accent-lt);margin-top:4px;font-weight:600;font-family:'Syne',sans-serif;letter-spacing:.04em}
+.pc-tag{display:inline-block;font-size:10px;padding:2px 8px;border-radius:100px;background:var(--glow2);color:var(--accent-lt);margin-top:4px;font-weight:600;font-family:'Syne',sans-serif;letter-spacing:.05em}
 
 /* ── Category badge colors ── */
 .c-study{background:rgba(99,153,34,.18);color:#9dce56}
@@ -157,7 +157,7 @@ select option{background:#0f0f1e}
 .empty p{font-size:14px;line-height:1.6}
 
 /* ── Toast ── */
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(24px);background:rgba(116,97,245,.88);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;opacity:0;transition:all .4s ease}
+.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(24px);background:rgba(116,97,245,.88);color:#fff;padding:10px 22px;border-radius:100px;font-size:13px;font-weight:600;opacity:0;transition:all .3s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
 /* ── Views ── */
@@ -310,10 +310,17 @@ function logIt(){
   document.getElementById('inp-w').value='';
   document.getElementById('cf-sl').value=70;
   document.getElementById('cf-lbl').textContent='70%';
+
+  // Reset state & UI
+  CAT='study';
+  EMO={label:'',emoji:''};
+  pickRev('yes');
+  document.querySelectorAll('#cat-row .pill').forEach(p=>p.classList.toggle('sel',p.dataset.cat==='study'));
+  document.querySelectorAll('#emo-row .emo-btn').forEach(b=>b.classList.remove('sel'));
 }
 
 function setOut(id,outcome){
-  const d=DD.find(x=>x.id===id);
+  const d=DD.find(x=>x.id==id);
   if(!d)return;
   d.outcome=outcome;save();renderLedger();renderStats();renderIns();
   toast(outcome==='good'?'Good call marked ✓':outcome==='bad'?'Regret logged':'Reset to pending');
@@ -353,9 +360,9 @@ function renderLedger(){
         <span class="di-date">${dt}</span>
       </div>
       <div class="out-row">
-        <button class="ob${d.outcome==='good'?' og':''}" onclick="setOut(${d.id},'good')">✓ Good call</button>
-        <button class="ob${d.outcome==='pending'?' op':''}" onclick="setOut(${d.id},'pending')">⏳ Pending</button>
-        <button class="ob${d.outcome==='bad'?' or':''}" onclick="setOut(${d.id},'bad')">✗ Regret</button>
+        <button class="ob${d.outcome==='good'?' og':''}" onclick="setOut('${d.id}','good')">✓ Good call</button>
+        <button class="ob${d.outcome==='pending'?' op':''}" onclick="setOut('${d.id}','pending')">⏳ Pending</button>
+        <button class="ob${d.outcome==='bad'?' or':''}" onclick="setOut('${d.id}','bad')">✗ Regret</button>
       </div>
     </div>`;
   }).join('');
