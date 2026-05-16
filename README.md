@@ -16,7 +16,7 @@ You make 30–50 significant micro-decisions per day — study vs. build, defer 
 
 ## Who it's for
 
-BCom students, CA aspirants, founders, builders — anyone in high-execution mode with no decision infrastructure.
+All students, aspirants, founders, builders — anyone in high-execution mode with no decision infrastructure.
 
 ## Why existing tools fail
 
