@@ -1,12 +1,12 @@
-![Preview](preview.svg)
-
-![Preview](preview2.svg)
-
-![Preview](preview3.svg)
-
 # DecisionLedger
 
 **The micro-journal that turns your choices into patterns.**
+
+# ![Preview](preview.svg)
+
+# ![Preview](preview2.svg)
+
+# ![Preview](preview3.svg)
 
 ---
 
